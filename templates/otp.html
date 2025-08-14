@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}OTP — Sudoku{% endblock %}
+{% block content %}
+<section class="card">
+  <h1>Enter OTP</h1>
+  <p class="muted">We sent a {{ purpose or 'login' }} OTP to your email. It expires in a few minutes.</p>
+  <form method="post" class="form">
+    <input type="hidden" name="purpose" value="{{ purpose }}">
+    <input type="hidden" name="next" value="{{ next }}">
+    <label>6-digit code
+      <input type="text" name="code" minlength="6" maxlength="6" pattern="[0-9]{6}" inputmode="numeric" required>
+    </label>
+    <button type="submit" class="btn">Verify</button>
+  </form>
+</section>
+{% endblock %}
+

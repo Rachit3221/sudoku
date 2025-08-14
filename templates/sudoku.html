@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Play Sudoku — Sudoku{% endblock %}
+{% block content %}
+<section class="card">
+  <div class="row between center">
+    <h1>Play Sudoku</h1>
+    <div class="controls">
+      <label>Difficulty
+        <select id="level">
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+      </label>
+      <button id="new-game" class="btn">New Game</button>
+      <button id="check" class="btn outline">Check Solution</button>
+    </div>
+  </div>
+
+  <div id="status" class="status muted">Pick a cell and type 1–9. Wrong entries turn red—try again!</div>
+
+  <div id="board" class="board" aria-label="Sudoku board"></div>
+</section>
+
+<!-- Define API URL BEFORE loading script.js -->
+<script>
+  window.SUDOKU_API = "{{ url_for('api_new_puzzle') }}";
+</script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+{% endblock %}
